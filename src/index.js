@@ -15,13 +15,6 @@ const resolvers = require('./resolvers');
 
 // 비밀번호
 const jwt = require('jsonwebtoken');
-const bcrypt = require('bcrypt');
-
-const saltRounds = 10;
-
-const passwordEncrypt = async password => {
-  return await bcrypt.hash(password, saltRounds)
-};
 
 const getUser = token => {
   if(token){
