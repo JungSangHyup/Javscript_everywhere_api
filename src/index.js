@@ -1,5 +1,8 @@
 // index.js
 // This is the main entry point of our application
+
+const depthLimit = require('graphql-depth-limit');
+const { createComplexityLimitRule } = require('graphql-validation-complexity');
 const { ApolloServer } = require('apollo-server-express');
 const express = require('express');
 const app = express();
@@ -32,6 +35,7 @@ db.connect(DB_HOST);
 const server = new ApolloServer({
   typeDefs,
   resolvers,
+  validationRules: [depthLimit(5), createComplexityLimitRule(1000)],
   context: ({ req }) => {
     const token =req.headers.authorization;
     const user = getUser(token);
