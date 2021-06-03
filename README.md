@@ -30,6 +30,8 @@
 
 2. .env.example 수정하기
 
+   .env 뒤의 .example를 지웁니다.
+
    `DB_HOST=<Your MongoDB URL>`    
    `TEST_DB=<A MongoDB URL for Running Tests>`
 
