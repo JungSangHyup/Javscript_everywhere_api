@@ -1,7 +1,5 @@
 # Javascript_everywhere book study
 
-Original : https://github.com/javascripteverywhere/api
-
 노트 앱을 사용하기 위한 백엔드 부분입니다.
 
 ## Skills
