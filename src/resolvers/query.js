@@ -22,24 +22,24 @@ module.exports = {
     let cursorQuery = {};
 
     if(cursor){
-      cursorQuery = { _id: { $lt: cursor } };
+      cursorQuery = { _id: { $lt: cursor } }
+    };
 
-      let notes = await models.Note.find(cursorQuery)
-      .sort({_id: -1})
-      .limit(limit + 1);
+    let notes = await models.Note.find(cursorQuery)
+    .sort({_id: -1})
+    .limit(limit + 1);
 
-      if(notes.length > limit){
-        hasNextPage = true;
-        notes = notes.slice(0, -1);
-      }
-
-      const newCursor = notes[notes.length -1]._id;
-
-      return{
-        notes,
-        cursor: newCursor,
-        hasNextPage
-      };
+    if(notes.length > limit){
+      hasNextPage = true;
+      notes = notes.slice(0, -1);
     }
+
+    const newCursor = notes[notes.length -1]._id;
+
+    return{
+      notes,
+      cursor: newCursor,
+      hasNextPage
+    };
   }
 }

@@ -32,6 +32,7 @@ module.exports = {
   signIn: async(parent, { username, email, password}, { models }) => {
   if(email){
     email = email.trim().toLowerCase();
+    
   }
   const user = await models.User.findOne({
     $or : [{ email }, { username }]
@@ -47,6 +48,7 @@ module.exports = {
   }
 
   return jwt.sign({ id: user._id }, process.env.JWT_SECRET);
+  
   },
 
   newNote: async(parent, args, { models, user }) => {
